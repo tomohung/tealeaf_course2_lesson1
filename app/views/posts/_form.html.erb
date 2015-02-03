@@ -1,6 +1,9 @@
-<% form_for @post do |f| %>
-  <% f.label :title %>
-  <% f.label :url %>
-  <% f.text_area :description %>
-  <% f.submit %>
+<%= form_for @post do |f| %>
+  <%= f.label :title %>
+  
+  <%= f.label :url %>
+  
+  <%= f.text_area :description %>
+  <br>
+  <%= f.submit %>
 <% end %>

@@ -11,7 +11,7 @@ before_action :set_post, only: [:show, :edit, :update]
   end
 
   def show
-
+    @post = Post.find(params[:id])
   end
 
   def edit

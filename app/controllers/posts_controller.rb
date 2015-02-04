@@ -11,7 +11,7 @@ before_action :set_post, only: [:show, :edit, :update]
   end
 
   def show
-    @post = Post.find(params[:id])
+    
   end
 
   def edit
@@ -23,12 +23,22 @@ before_action :set_post, only: [:show, :edit, :update]
   end
 
   def create
-
+    @post = Post.new(post_params)
+    if @post.save
+      flash[:notice] = "Error for creating new post."
+      render :new
+    else
+      redirect_to post_path(@post)
+    end
   end
 
 private
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :url, :description)
   end
 
 end

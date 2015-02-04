@@ -19,12 +19,17 @@ before_action :set_post, only: [:show, :edit, :update]
   end
 
   def update
-
+    if !@post.update(post_params)
+      flash[:notice] = "Error for update"
+      render :edit
+    else
+      redirect_to post_path(@post)
+    end
   end
 
   def create
     @post = Post.new(post_params)
-    if @post.save
+    if !@post.save
       flash[:notice] = "Error for creating new post."
       render :new
     else

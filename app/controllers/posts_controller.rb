@@ -19,21 +19,21 @@ class PostsController < ApplicationController
   end
 
   def update
-    if !@post.update(post_params)
-      flash[:notice] = "Error for update"
-      render :edit
-    else
+    if @post.update(post_params)
+      flash[:notice] = "Updated."
       redirect_to post_path(@post)
+    else
+      render :edit
     end
   end
 
   def create
     @post = Post.new(post_params)
-    if !@post.save
-      flash[:notice] = "Error for creating new post."
-      render :new
-    else
+    if @post.save
+      flash[:notice] = "Post created."
       redirect_to post_path(@post)
+    else
+      render :new
     end
   end
 

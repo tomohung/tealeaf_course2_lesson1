@@ -1,8 +1,6 @@
-<div>
+<div class='well'>
+  <h4><%= comment.user.username %></h4>
   <p>
-    <%= comment.user.username %>
     <%= comment.body =%> 
-    <%= link_to "Edit", edit_post_comemnt_path([comment.post, comment]) %> |
-    <%= link_to "Delete", comment, method: :delete, data: { confirm: 'Are you sure?'} %>
   </p>
 </div>

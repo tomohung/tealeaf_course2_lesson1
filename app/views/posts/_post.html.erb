@@ -1,6 +1,14 @@
 <div class='well'>
+  
+  <%= render 'category_badge', post: post %>
+  
+  <h4>
+    <%= link_to post.title, post_path(post) %>
+    <small><%= "by " + post.creator.username if post.creator %></small>
+  </h4>
+
   <p>
-    <%= post.title =%> 
-    <%= link_to "(Show)", post_path(post) %>
+    <%= post.description %>
   </p>
+
 </div>

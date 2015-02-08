@@ -1,11 +1,14 @@
 <div class="well">
-  <%= render 'category_badge', post: @post %>
+  <%= render 'posts/category_badge', post: @post %>
 
   <h4><%= @post.title%></h4>
+  
   <%= link_to @post.url, @post.url %>
+  
   <div class="well">
     <p><%= @post.description%></p>
   </div>
+  
   <%= link_to "Edit", edit_post_path(@post)%> |
   <%= link_to "Back", root_path%>
 </div>

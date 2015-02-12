@@ -6,8 +6,8 @@
 
 <ul class="nav nav-tabs">
     <% params[:tab] = 'posts' if !params[:tab] %>
-    <li class="<%= 'active' if params[:tab] == 'posts' %>"><a href="#posts" data-toggle="tab">Posts(<%= @user.posts.count %>)</a></li>
-    <li class="<%= 'active' if params[:tab] == 'comments' %>"> <a href="#comments" data-toggle="tab">Comments(<%= @user.comments.count %>)</a></li>
+    <li class="<%= 'active' if params[:tab] == 'posts' %>"><a href="#posts" data-toggle="tab">Posts <span class='badge'><%= @user.posts.count %></span></a></li>
+    <li class="<%= 'active' if params[:tab] == 'comments' %>"> <a href="#comments" data-toggle="tab">Comments <span class='badge'><%= @user.comments.count %></span></a></li>
 </ul>
 
 <div class="tab-content">

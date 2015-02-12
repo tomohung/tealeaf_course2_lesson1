@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(params.require(:user).permit!)
 
     if @user.save
-      flash[:notice] = "User Registed!"
+      flash[:notice] = "User Registed! Please Log In."
       redirect_to posts_path
     else
       render :new

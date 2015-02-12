@@ -1,21 +1,16 @@
 <div class="well">
   <%= render 'posts/category_badge', post: @post %>
-
-  <h4><%= @post.title%></h4>
+  <h4><%= @post.title%> <small> <%= link_to @post.url, fix_url(@post.url) %> </small></h4>
   
-  <%= link_to @post.url, fix_url(@post.url) %>
-  
-  Posted by <%=link_to @post.creator.username, user_path(@post.creator) %> 
-  at <%= display_datatime(@post.created_at) if @post.created_at %>
-  
-  <div class="well">
-    <p><%= @post.description%></p>
+  <div>
+    <%= @post.description%>
   </div>
+
+  <%= render 'post_info', post: @post %>
   
   <%= link_to "Edit", edit_post_path(@post)%> |
   <%= link_to "Back", root_path%>
 </div>
 
 <%= render 'comments/form' %>
-
 <%= render @post.comments %>

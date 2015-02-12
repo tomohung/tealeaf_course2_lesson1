@@ -1,0 +1,4 @@
+<h5><small>
+  Posted by <%=link_to post.creator.username, user_path(post.creator) %> 
+  at <%= display_datatime(post.created_at) if post.created_at %>
+</small></h5>    

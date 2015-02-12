@@ -3,17 +3,12 @@
   <%= render 'posts/category_badge', post: post %>
   
   <h4>
-    <%= link_to post.title, post_path(post) %>
-    <% if post.creator %>
-      <small>
-        Posted by <%=link_to post.creator.username, user_path(post.creator) %> 
-        at <%= display_datatime(post.created_at) if post.created_at %>
-      </small>    
-    <% end %>
+    <%= link_to post.title, fix_url(post.url) %>
   </h4>
-
-  <p>
-    <%= post.description %>
-  </p>
+  <%= link_to pluralize(post.comments.count, "comment"), post_path(post) %>
+  <h5><small>
+    Posted by <%=link_to post.creator.username, user_path(post.creator) %> 
+    at <%= display_datatime(post.created_at) if post.created_at %>
+  </small></h5>    
 
 </div>

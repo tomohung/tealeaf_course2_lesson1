@@ -1,4 +1,12 @@
+<%= render 'shared/show_all_post_link', current_path: @post.title %>
+
 <div class="well">
+  <div class='pull-right'>
+    <% if created_by?(@post) %>
+      <%= link_to "[Edit this post]", edit_post_path(@post)%>
+    <% end %>
+  </div>
+
   <%= render 'category_badge', post: @post %>
   <h4><%= @post.title%> <small> <%= link_to @post.url, fix_url(@post.url) %> </small></h4>
   
@@ -8,10 +16,6 @@
 
   <%= render 'shared/post_info', post: @post %>
   
-  <% if created_by?(@post) %>
-    <%= link_to "Edit", edit_post_path(@post)%> |
-  <% end %>
-  <%= link_to "Back", root_path%>
 </div>
 
 <%= render 'comments/form' if logged_in? %>

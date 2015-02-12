@@ -16,4 +16,5 @@ class ApplicationController < ActionController::Base
   def created_by?(post)
     post.creator == current_user
   end
+ 
 end

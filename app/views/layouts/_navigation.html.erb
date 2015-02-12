@@ -2,6 +2,23 @@
   <li>
     <%= link_to "Postit!", root_path, :class => 'brand' %>
   </li>
+
+  <li>
+  <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Categories <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu">
+      <% Category.all.each do |category| %>
+        <li><a href= <%= category_path(category) %>> <%= category.name%></a></li>
+      <% end %>
+
+      <% if logged_in? %>
+        <li role="presentation" class="divider"></li>
+        <li><%= link_to 'Category Manager', categories_path %></li>
+      <% end %>
+    </ul>
+  </div>  
+  </li>
   
   <% if logged_in? %>
   <li>
@@ -18,23 +35,9 @@
       <%= link_to 'Log In', login_path %>
     </li>
     <li>
-      <%= link_to 'Register', register_path%>
+      <%= button_to 'Register', register_path, class: 'btn btn-success'%>
     </li>
   <% end %>    
   
 </ul>
 
-<div class="btn-group">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-  Categories <span class="caret"></span></button>
-  <ul class="dropdown-menu" role="menu">
-    <% Category.all.each do |category| %>
-      <li><a href= <%= category_path(category) %>> <%= category.name%></a></li>
-    <% end %>
-    
-    <% if logged_in? %>
-      <li role="presentation" class="divider"></li>
-      <li><%= link_to 'Category Manager', categories_path %></li>
-    <% end %>
-  </ul>
-</div>

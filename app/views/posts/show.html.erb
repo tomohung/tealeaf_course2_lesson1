@@ -1,16 +1,18 @@
 <div class="well">
-  <%= render 'posts/category_badge', post: @post %>
+  <%= render 'category_badge', post: @post %>
   <h4><%= @post.title%> <small> <%= link_to @post.url, fix_url(@post.url) %> </small></h4>
   
   <div>
     <%= @post.description%>
   </div>
 
-  <%= render 'post_info', post: @post %>
+  <%= render 'shared/post_info', post: @post %>
   
-  <%= link_to "Edit", edit_post_path(@post)%> |
+  <% if created_by?(@post) %>
+    <%= link_to "Edit", edit_post_path(@post)%> |
+  <% end %>
   <%= link_to "Back", root_path%>
 </div>
 
-<%= render 'comments/form' %>
+<%= render 'comments/form' if logged_in? %>
 <%= render @post.comments %>

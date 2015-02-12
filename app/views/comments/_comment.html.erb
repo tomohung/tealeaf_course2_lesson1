@@ -1,6 +1,6 @@
 <div class='well'>
-  <h4><%= comment.user.username if comment.user%></h4>
   <p>
     <%= comment.body =%> 
   </p>
+  <%= render '/shared/post_info', post: comment %>
 </div>

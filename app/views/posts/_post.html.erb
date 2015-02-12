@@ -6,6 +6,6 @@
     <%= link_to post.title, fix_url(post.url) %>
   </h4>
   <%= link_to pluralize(post.comments.count, "comment"), post_path(post) %>
-  <%= render 'post_info' %>
+  <%= render 'shared/post_info', post: post %>
 
 </div>

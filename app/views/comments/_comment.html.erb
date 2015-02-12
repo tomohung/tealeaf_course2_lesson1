@@ -1,6 +1,10 @@
 <div class='well'>
   <p>
-    <%= comment.body =%> 
+    "<%= comment.body %>"
+    <% if show_post_link %>
+      on <%= link_to comment.post.title, post_path(comment.post) %>
+    <% end %>
   </p>
   <%= render '/shared/post_info', post: comment %>
+  
 </div>

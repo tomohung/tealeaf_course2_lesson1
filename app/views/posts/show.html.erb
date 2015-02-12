@@ -15,4 +15,4 @@
 </div>
 
 <%= render 'comments/form' if logged_in? %>
-<%= render @post.comments %>
+<%= render @post.comments, show_post_link: false %>

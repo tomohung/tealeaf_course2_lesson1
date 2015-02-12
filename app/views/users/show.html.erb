@@ -1,0 +1,20 @@
+<h4>Profile: <%= @user.username %></h4>
+
+<div class='well'>
+  <h5>User Name: <%=@user.username%></h5>
+</div>
+
+<ul class="nav nav-tabs">
+    <% params[:tab] = 'posts' if !params[:tab] %>
+    <li class="<%= 'active' if params[:tab] == 'posts' %>"><a href="#posts" data-toggle="tab">Posts(<%= @user.posts.count %>)</a></li>
+    <li class="<%= 'active' if params[:tab] == 'comments' %>"> <a href="#comments" data-toggle="tab">Comments(<%= @user.comments.count %>)</a></li>
+</ul>
+
+<div class="tab-content">
+    <div class="<%= if (params[:tab] == 'posts' || !params[:tab])then 'tab-pane active'  else 'tab-pane' end%>" id="posts">
+      <%= render @user.posts %>
+    </div>
+    <div class="<%= if params[:tab] == 'comments' then 'tab-pane active'  else 'tab-pane' end%>" id="comments">
+      <%= render @user.comments, show_post_link: true%>
+    </div>
+</div>

@@ -7,7 +7,7 @@
     <% end %>
   </div>
 
-  <%= render 'category_badge', post: @post %>
+  <%= render '/posts/category_badge', post: @post %>
   <h4><%= @post.title%> <small> <%= link_to @post.url, fix_url(@post.url) %> </small></h4>
   
   <div>

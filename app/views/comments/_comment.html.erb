@@ -1,4 +1,6 @@
 <div class='well'>
+
+<blockquote>
   <p>
     "<%= comment.body %>"
     <% if show_post_link %>
@@ -6,5 +8,6 @@
     <% end %>
   </p>
   <%= render '/shared/post_info', post: comment %>
-  
+</blockquote>  
+
 </div>

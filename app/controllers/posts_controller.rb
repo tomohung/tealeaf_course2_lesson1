@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   
-  before_action :set_post, only: [:show, :edit, :update, :vote]
+  before_action :set_post, only: [:show, :edit, :update, :vote, :vote_destroy]
   before_action :require_login, only: [:new, :edit]
   
   def index
@@ -36,18 +36,6 @@ class PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       render :new
-    end
-  end
-
-  def vote
-    
-    @vote = Vote.create(voteable: @post, creator: current_user, vote: params[:vote])
-    if @vote.save
-      flash[:notice] = 'Like it!'
-      redirect_to :back
-    else
-      flash[:error] = 'Fail to like.'
-      redirect_to :back
     end
   end
 

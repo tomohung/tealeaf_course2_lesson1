@@ -2,3 +2,12 @@
   Posted by <%=link_to post.creator.username, user_path(post.creator) %> 
   at <%= display_datatime(post.created_at) if post.created_at %>
 </small></h5>    
+
+<%= link_to vote_post_path(post, vote: true), method: :post do %>
+  <i class='icon-thumbs-up'></i>
+  like it!
+<% end %>
+
+<% if post.votes.any? %>
+  <%= pluralize(post.votes.size, 'person') %> liked.
+<% end %>

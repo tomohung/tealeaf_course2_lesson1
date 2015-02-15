@@ -12,9 +12,9 @@
 
 <div class="tab-content">
     <div class="<%= if (params[:tab] == 'posts' || !params[:tab])then 'tab-pane active'  else 'tab-pane' end%>" id="posts">
-      <%= render @user.posts %>
+      <%= render @user.posts.order(id: :desc) %>
     </div>
     <div class="<%= if params[:tab] == 'comments' then 'tab-pane active'  else 'tab-pane' end%>" id="comments">
-      <%= render @user.comments, show_post_link: true%>
+      <%= render @user.comments.order(id: :desc), show_post_link: true%>
     </div>
 </div>

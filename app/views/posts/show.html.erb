@@ -19,4 +19,4 @@
 </div>
 
 <%= render 'comments/form' if logged_in? %>
-<%= render @post.comments, show_post_link: false %>
+<%= render @post.comments.order(id: :desc), show_post_link: false %>

@@ -13,7 +13,7 @@
     You and <%= pluralize(votes.size - 1, 'person') %> liked this.
   <% end %>
     
-  <%= link_to vote_path(user_vote), method: :delete do %>
+  <%= link_to vote_path(user_vote), remote: true, method: :delete do %>
     <i class='icon-thumbs-up'></i>
     Cancel
   <% end %>
@@ -24,7 +24,7 @@
   <% end %>
 
   <% if logged_in? %>  
-    <%= link_to votes_path(voteable_type: post.class.name, voteable_id: post.id), method: :post do %>
+    <%= link_to votes_path(voteable_type: post.class.name, voteable_id: post.id), remote: true, method: :post do %>
       <i class='icon-thumbs-up'></i>
       Like it!
     <% end %>

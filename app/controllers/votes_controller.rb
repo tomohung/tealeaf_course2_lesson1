@@ -10,10 +10,15 @@ class VotesController < ApplicationController
     end
 
     if @vote.save
-      redirect_to :back
+      respond_to do |format|
+        format.html do
+          redirect_to :back
+        end
+        format.js
+      end
     else
       flash[:error] = 'Fail to like.'
-      redirect_to :back
+      flash.now
     end
   end
 

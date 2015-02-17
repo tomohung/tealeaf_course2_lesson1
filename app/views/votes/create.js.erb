@@ -1,2 +1,2 @@
-alert('create and destroy voteable_<%=@vote.voteable_type%>_<%=@vote.voteable_id%>');
-$("voteable_<%=@vote.voteable_type%>_<%=@vote.voteable_id%>").html("<%= render 'shared/show_dislike_link', vote: @vote %>");
+$("#<%=@vote.voteable.class.name%>_<%=@vote.voteable.id%>_votes").html("<%= j render 'shared/display_like_text', post: @vote.voteable %>");
+$("#voteable_<%=@vote.voteable_type%>_<%=@vote.voteable_id%>").html("<%= j render 'shared/show_dislike_link', vote: @vote %>");

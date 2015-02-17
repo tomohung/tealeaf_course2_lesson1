@@ -1,2 +1,2 @@
-alert('destroy, and create #vote_<%=@vote.id%>');
-$("#vote_<%=@vote.id%>").html("<%= render 'shared/show_like_link', post: @vote.voteable %>");
+$("#<%=@vote.voteable.class.name%>_<%=@vote.voteable.id%>_votes").html("<%= j render 'shared/display_like_text', post: @vote.voteable %>");
+$("#vote_<%=@vote.id%>").html("<%= j render 'shared/show_like_link', post: @vote.voteable %>");

@@ -1,5 +1,7 @@
+<% votes = post.votes %>
 <% user_vote = votes.where(creator: current_user).first if logged_in? %>
 
+<span id='<%= post.class.name %>_<%= post.id %>_votes'>
 <% if user_vote %>
   <% if votes.size == 1 %>
     You liked this.
@@ -9,6 +11,7 @@
   
 <% else %>
   <% if votes.any? %>
-    <%= pluralize(post.like_votes.size, 'person') %> liked this.
+    <%= pluralize(votes.size, 'person') %> liked this.
   <% end %>
 <% end %>
+</span>

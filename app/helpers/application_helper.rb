@@ -7,11 +7,4 @@ module ApplicationHelper
     dt.strftime("%m/%d/%Y %l:%M %P %Z")
   end
   
-  def show_like_info
-
-  end
-  
-  def show_cancel_like_info
-    
-  end
 end

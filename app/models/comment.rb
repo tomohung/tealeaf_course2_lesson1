@@ -8,4 +8,5 @@ class Comment < ActiveRecord::Base
   def like_votes
     self.votes
   end
+
 end

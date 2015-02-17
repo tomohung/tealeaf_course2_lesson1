@@ -1,1 +1,2 @@
-alert('hi there')
+alert('create and destroy voteable_<%=@vote.voteable_type%>_<%=@vote.voteable_id%>');
+$("voteable_<%=@vote.voteable_type%>_<%=@vote.voteable_id%>").html("<%= render 'shared/show_dislike_link', vote: @vote %>");

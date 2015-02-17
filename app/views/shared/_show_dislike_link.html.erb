@@ -1,0 +1,6 @@
+<span id = 'vote_<%=vote.id%>'>
+  <%= link_to vote_path(vote), remote: true, method: :delete do %>
+    <i class='icon-thumbs-up'></i>
+    Cancel
+  <% end %>
+</span>

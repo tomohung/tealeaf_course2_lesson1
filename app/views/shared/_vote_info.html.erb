@@ -1,0 +1,10 @@
+<% votes = post.like_votes %>
+<% user_vote = votes.where(creator: current_user).first if logged_in? %>
+
+<%= render 'shared/display_like_text', votes: votes %>
+
+<% if user_vote %>
+  <%= render 'shared/show_dislike_link', vote: user_vote %>
+<% else %>
+  <%= render 'shared/show_like_link', post: post %>
+<% end %>

@@ -3,32 +3,4 @@
   at <%= display_datatime(post.created_at) if post.created_at %>
 </small></h5>    
 
-<% votes = post.like_votes %>
-<% user_vote = votes.where(creator: current_user).first if logged_in? %>
-
-<% if user_vote %>
-  <% if votes.size == 1 %>
-    You liked this.
-  <% else %>
-    You and <%= pluralize(votes.size - 1, 'person') %> liked this.
-  <% end %>
-    
-  <%= link_to vote_path(user_vote), remote: true, method: :delete do %>
-    <i class='icon-thumbs-up'></i>
-    Cancel
-  <% end %>
-  
-<% else %>
-  <% if votes.any? %>
-    <%= pluralize(post.like_votes.size, 'person') %> liked this.
-  <% end %>
-
-  <% if logged_in? %>  
-    <%= link_to votes_path(voteable_type: post.class.name, voteable_id: post.id), remote: true, method: :post do %>
-      <i class='icon-thumbs-up'></i>
-      Like it!
-    <% end %>
-  <% end %>
-<% end %>
-
-
+<%= render 'shared/vote_info', post: post %>

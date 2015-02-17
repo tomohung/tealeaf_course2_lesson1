@@ -1,0 +1,14 @@
+<% user_vote = votes.where(creator: current_user).first if logged_in? %>
+
+<% if user_vote %>
+  <% if votes.size == 1 %>
+    You liked this.
+  <% else %>
+    You and <%= pluralize(votes.size - 1, 'person') %> liked this.
+  <% end %>
+  
+<% else %>
+  <% if votes.any? %>
+    <%= pluralize(post.like_votes.size, 'person') %> liked this.
+  <% end %>
+<% end %>

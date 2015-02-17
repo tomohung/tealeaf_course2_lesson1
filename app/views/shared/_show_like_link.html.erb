@@ -1,0 +1,8 @@
+<span id = 'voteable_<%=post.class.name%>_<%=post.id%>'>
+<% if logged_in? %>  
+  <%= link_to votes_path(voteable_type: post.class.name, voteable_id: post.id), remote: true, method: :post do %>
+    <i class='icon-thumbs-up'></i>
+    Like it!
+  <% end %>
+<% end %>
+</span>

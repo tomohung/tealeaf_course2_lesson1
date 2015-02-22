@@ -1,13 +1,9 @@
 class VotesController < ApplicationController
   def create
     
-    if params[:voteable_type] == 'Post'
-      post = Post.find(params[:voteable_id])
-      @vote = Vote.create(voteable: post, creator: current_user)
-    else
-      comment = Comment.find(params[:voteable_id])
-      @vote = Vote.create(voteable: comment, creator: current_user)
-    end
+    class_type = params[:voteable_type].constantize
+    object = class_type.find(params[:voteable_id])
+    @vote = Vote.create(voteable: object, creator: current_user)
 
     if @vote.save
       respond_to do |format|

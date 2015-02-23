@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, except: [:show]
   
   def index
     @categories = Category.all
@@ -49,5 +50,12 @@ private
   
   def set_category
     @category = Category.find_by slug: params[:id]
+  end
+
+  def require_admin
+    unless admin?
+      flash[:error] = 'Need Admin Authentication.'
+      redirect_to root_path
+    end
   end
 end

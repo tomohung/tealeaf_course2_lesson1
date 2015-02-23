@@ -14,7 +14,7 @@ class VotesController < ApplicationController
       end
     else
       flash[:error] = 'Fail to like.'
-      flash.now
+      redirect_to :back
     end
   end
 
